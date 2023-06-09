@@ -29,7 +29,9 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 app.use(express.json());
-
+app.get('/', (req,res)=>{
+res.send("welcom to to-do api");
+})
 app.post("/signup", async (req, res) => {
   const { name, mobile, password } = req.body;
 
