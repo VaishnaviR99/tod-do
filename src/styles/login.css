@@ -1,10 +1,10 @@
-.page {
+.page2 {
     background-color: black;
     color: white;
     padding: 5rem;
   }
   
-  .signup {
+  .login {
     margin: 0 auto;
     max-width: 400px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -12,7 +12,7 @@
     border-radius: 5px;
   }
   
-  .heading {
+  .heading2 {
     text-align: center;
     margin-bottom: 20px;
   }
@@ -32,7 +32,7 @@
     margin-bottom: 10px;
   }
   
-  .signupbtn {
+  .loginbtn {
     background-color: #333;
     color: white;
     cursor: pointer;

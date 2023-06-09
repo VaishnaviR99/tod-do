@@ -1,5 +1,13 @@
 const mongoose=require("mongoose")
-mongoose.connect("mongodb://0.0.0.0:27017/react-login-tut")
+
+const DB= "mongodb+srv://ralegaonkarvaishnavi:nWRyqxJW6Jo2Rspt@cluster0.n5dxfdr.mongodb.net/?retryWrites=true&w=majority"
+
+mongoose.connect(DB,{
+    useNewUrlParser: true,
+    useCreateIndexes: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+})
 .then(()=>{
     console.log("mongodb connected");
 })
@@ -9,7 +17,7 @@ mongoose.connect("mongodb://0.0.0.0:27017/react-login-tut")
 
 
 const newSchema=new mongoose.Schema({
-    email:{
+    mobile:{
         type:String,
         required:true
     },

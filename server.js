@@ -7,17 +7,16 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
 
-
 app.get("/",cors(),(req,res)=>{
 
 })
 
 
 app.post("/",async(req,res)=>{
-    const{email,password}=req.body
+    const{mobile,password}=req.body
 
     try{
-        const check=await collection.findOne({email:email})
+        const check=await collection.findOne({mobile:mobile,password:password})
 
         if(check){
             res.json("exist")

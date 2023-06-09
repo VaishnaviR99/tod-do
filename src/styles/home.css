@@ -1,0 +1,66 @@
+.page3{
+  padding: 5rem;
+  background-color: black;
+    color: white;
+}
+
+.homepage {
+    background-color: black;
+    color: white;
+    padding: 20px;
+  }
+  
+  .heading3 {
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .logout{
+    padding-bottom: 0;
+  }
+  
+  input[type="text"] {
+    padding: 5px;
+  }
+  
+  button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid white;
+  }
+  
+  th {
+    font-weight: bold;
+  }
+  
+  tr:last-child td {
+    border-bottom: none;
+  }
+  
+  div input[type="text"],
+  div button {
+    margin-top: 10px;
+  }
+  
+  div:last-child input[type="text"],
+  div:last-child button {
+    margin-top: 20px;
+  }
+  

@@ -1,38 +1,39 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate, Link } from "react-router-dom"
+import "../styles/login.css"
 
 
 function Login() {
 
-    const history=useNavigate();
+    const history = useNavigate();
 
-    const [email,setEmail]=useState('')
-    const [password,setPassword]=useState('')
+    const [mobile, setMobile] = useState('')
+    const [password, setPassword] = useState('')
 
-    async function submit(e){
+    async function submit(e) {
         e.preventDefault();
 
-        try{
+        try {
 
-            await axios.post("http://localhost:8000/",{
-                email,password
+            await axios.post("/login", {
+                mobile, password
             })
-            .then(res=>{
-                if(res.data==="exist"){
-                    history("/home",{state:{id:email}})
-                }
-                else if(res.data==="notexist"){
-                    alert("User have not sign up")
-                }
-            })
-            .catch(e=>{
-                alert("wrong details")
-                console.log(e);
-            })
+                .then(res => {
+                    if (res.mobile === mobile) {
+                        history("/home")
+                    }
+                    else  {
+                        alert("User have not sign up")
+                    }
+                })
+                .catch(e => {
+                    alert("wrong details")
+                    console.log(e);
+                })
 
         }
-        catch(e){
+        catch (e) {
             console.log(e);
 
         }
@@ -41,23 +42,30 @@ function Login() {
 
 
     return (
-        <div className="login">
+        <div className="page2">
+            <div className="login">
+                <div className="heading2">
+                    <h1>Login</h1>
+                </div>
 
-            <h1>Login</h1>
 
-            <form action="POST">
-                <input type="email" onChange={(e) => { setEmail(e.target.value) }} placeholder="Email"  />
-                <input type="password" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password"  />
-                <input type="submit" onClick={submit} />
+                <form action="POST">
+                    <label>Mobile No.</label>
+                    <input type="number" onChange={(e) => { setMobile(e.target.value) }} placeholder="Mobile no." />
+                    <label>Password</label>
+                    <input type="password" onChange={(e) => { setPassword(e.target.value) }} placeholder="Password" />
+                    
+                    <button className="loginbtn" type="submit" onClick={submit}>Login In</button>
 
-            </form>
+                </form>
 
-            <br />
-            <p>OR</p>
-            <br />
+                <br />
+                <p>OR</p>
+                <br />
 
-            <Link to="/">Signup Page</Link>
+                <Link to="/signup">Signup Page</Link>
 
+            </div>
         </div>
     )
 }
