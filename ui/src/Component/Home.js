@@ -12,7 +12,7 @@ function Home() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/tasks"); // Replace '/api/tasks' with your actual endpoint for fetching tasks
+        const response = await axios.get("https://ill-jade-tick-yoke.cyclic.app/api/tasks"); // Replace '/api/tasks' with your actual endpoint for fetching tasks
         setTasks(response.data.tasks);
         console.log("task: ", response.data.tasks);
       } catch (error) {

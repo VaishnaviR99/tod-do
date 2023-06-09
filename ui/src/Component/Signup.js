@@ -18,7 +18,7 @@ function Signup() {
    
 
     try {
-      const response = await axios.post('http://localhost:8000/signup', {
+      const response = await axios.post('https://ill-jade-tick-yoke.cyclic.app/signup', {
         name,
         mobile,
         password,

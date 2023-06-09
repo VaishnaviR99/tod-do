@@ -16,7 +16,7 @@ function Login() {
 
         try {
 
-            await axios.post("http://localhost:8000/login", {
+            await axios.post("https://ill-jade-tick-yoke.cyclic.app/login", {
                 mobile, password
             })
                 .then(res => {
