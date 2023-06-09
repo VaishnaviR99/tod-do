@@ -10,7 +10,7 @@
   },
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "db.js",
   "devDependencies": {},
   "scripts": {
     "start": "node db.js"
