@@ -28,7 +28,7 @@ function Home() {
 
     if (newTask.trim() !== "") {
       try {
-        const response = await axios.post("http://localhost:8000/add-task", {
+        const response = await axios.post("https://ill-jade-tick-yoke.cyclic.app/add-task", {
           title: newTask,
           description: "",
         }); // Replace '/add-task' with your actual endpoint for adding a task
@@ -42,6 +42,7 @@ function Home() {
 
   const handleEditTask = (index) => {
     setEditTask(tasks[index]);
+    console.log(tasks[index]);
     setTasks(tasks.filter((_, i) => i !== index));
   };
 
@@ -53,7 +54,7 @@ function Home() {
           title: editTask,
         };
         await axios.put(
-          `http://localhost:8000/update-task/${editTask._id}`,
+          `https://ill-jade-tick-yoke.cyclic.app/update-task/${editTask._id}`,
           updatedTask
         ); // Replace `/update-task/${editTask._id}` with your actual endpoint for updating a task
         setTasks([
@@ -71,7 +72,7 @@ function Home() {
     const deletedTask = tasks[index];
     try {
       await axios.delete(
-        `http://localhost:8000/delete-task/${deletedTask._id}`
+        `https://ill-jade-tick-yoke.cyclic.app/delete-task/${deletedTask._id}`
       ); // Replace `/delete-task/${deletedTask._id}` with your actual endpoint for deleting a task
       setTasks(tasks.filter((_, i) => i !== index));
     } catch (error) {
@@ -104,7 +105,7 @@ function Home() {
           <thead>
             <tr>
               <th>Task</th>
-              <th>Edit</th>
+              {/* <th>Edit</th> */}
               <th>Delete</th>
             </tr>
           </thead>
@@ -112,9 +113,9 @@ function Home() {
             {tasks?.map((task, index) => (
               <tr key={index}>
                 <td>{task.title}</td>
-                <td>
+                {/* <td>
                   <button onClick={() => handleEditTask(index)}>Edit</button>
-                </td>
+                </td> */}
                 <td>
                   <button onClick={() => handleDeleteTask(index)}>
                     Delete
@@ -124,11 +125,11 @@ function Home() {
             ))}
           </tbody>
         </table>
-        {editTask !== "" && (
+        {editTask!== "" && (
           <div>
             <input
               type="text"
-              value={editTask}
+              value={editTask.title}
               onChange={(e) => setEditTask(e.target.value)}
             />
             <button onClick={handleUpdateTask}>Update Task</button>
