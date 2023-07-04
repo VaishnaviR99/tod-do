@@ -12,15 +12,18 @@ function Home() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("https://ill-jade-tick-yoke.cyclic.app/api/tasks"); // Replace '/api/tasks' with your actual endpoint for fetching tasks
+        const response = await axios.get(
+          "https://ill-jade-tick-yoke.cyclic.app/api/tasks"
+        ); // Replace '/api/tasks' with your actual endpoint for fetching tasks
         setTasks(response.data.tasks);
         console.log("task: ", response.data.tasks);
       } catch (error) {
         console.error("Error fetching tasks:", error);
       }
     };
-
-    fetchTasks();
+    if (JSON.parse(localStorage.getItem("login")).length > 0) {
+      fetchTasks();
+    }
   }, []);
 
   const handleAddTask = async (e) => {
@@ -28,10 +31,13 @@ function Home() {
 
     if (newTask.trim() !== "") {
       try {
-        const response = await axios.post("https://ill-jade-tick-yoke.cyclic.app/add-task", {
-          title: newTask,
-          description: "",
-        }); // Replace '/add-task' with your actual endpoint for adding a task
+        const response = await axios.post(
+          "https://ill-jade-tick-yoke.cyclic.app/add-task",
+          {
+            title: newTask,
+            description: "",
+          }
+        ); // Replace '/add-task' with your actual endpoint for adding a task
         setTasks([...tasks, response.data.task]);
         setNewTask("");
       } catch (error) {
@@ -40,11 +46,11 @@ function Home() {
     }
   };
 
-  const handleEditTask = (index) => {
-    setEditTask(tasks[index]);
-    console.log(tasks[index]);
-    setTasks(tasks.filter((_, i) => i !== index));
-  };
+  // const handleEditTask = (index) => {
+  //   setEditTask(tasks[index]);
+  //   console.log(tasks[index]);
+  //   setTasks(tasks.filter((_, i) => i !== index));
+  // };
 
   const handleUpdateTask = async () => {
     if (editTask.trim() !== "") {
@@ -85,7 +91,11 @@ function Home() {
       <div className="homepage">
         <div className="heading3">
           <h1>Task Manager</h1>
-          <Link className="logout" to={"/"}>
+          <Link
+            className="logout"
+            to={"/"}
+            onClick={() => localStorage.clear("login")}
+          >
             Logout
           </Link>
         </div>
@@ -125,7 +135,7 @@ function Home() {
             ))}
           </tbody>
         </table>
-        {editTask!== "" && (
+        {editTask !== "" && (
           <div>
             <input
               type="text"

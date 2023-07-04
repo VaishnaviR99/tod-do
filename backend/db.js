@@ -107,6 +107,7 @@ const Task = mongoose.model("Task", taskSchema);
 //     res.status(500).json({ message: "Internal server error" });
 //   }
 // });
+
 // Fetch all tasks
 app.get("/api/tasks", async (req, res) => {
   try {
